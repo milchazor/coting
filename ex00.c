@@ -15,6 +15,7 @@ int useless()
     printf("%d\n", sec);
     return(sec);
 }
+
 void arrprint(int* arr,int len)
 {
     printf("[");
@@ -24,36 +25,84 @@ void arrprint(int* arr,int len)
     }
     printf("%d]\n", arr[len-1]);
 }
-void arrswap(int* arr, int len, int BIG,int SMOL)
+
+void arrcomp(int* arr1, int* arr2,int len)
 {
+    int err[len];
+    int test = 0;
+    for(int x = 0; x < len; x++)
+    {
+        if(arr1[x] == arr2[x]){err[x] = 0;}
+        else 
+        {
+            err[x]=-1;
+            test = -1;
+        }
+    }
+    if(test == -1)
+    {
+        printf("failed\n");
+        arrprint(arr1,len);
+        arrprint(arr2,len);
+    } else {
+        printf("success\n");
+    }
+}
+
+int arrswap(int* arr, int len, int BIG,int SMOL)
+{
+    if( BIG < SMOL)
+    {
+        printf("sizefail\n");
+        return(-1);
+    }
+    
     int copy[len];
     for(int x = 0; x < len; x++)
     {
         copy[x] = arr[x];
     }
-    for(int x = SMOL; x < len; x++)
+    for(int x = SMOL; x < BIG+1; x++)
     {   
         arr[x] = copy[x-1];
     }
     arr[SMOL] = copy[BIG];
+    return(0);
 }
+
 void insort(int*arr, int len)
 {
-    int max = -1;
-    int pos = -1;
-    for(int x = len; x > len; x--)
+    for(int x = 1; x < len; x++)
     {
+        int max = arr[x];
+        int pos = x; 
 
         for(int y = 0; y < x; y++)
         {
-
+            if(arr[y]  max) {pos = y;}
         }
+        arrswap(arr, len, x, pos);
+        
     }
 }
+
 void main()
 {
-    int arr[10] = {0,5,3,8,1};
-    int len = 10;
-    insort(arr,len);
-    arrprint(arr,len);
+    int ex1[5] = {5,4,3,2,1};
+    int res1[5] = {1,2,3,4,5};
+    int len1 = 5;
+    insort(ex1,len1);
+    arrcomp(ex1,res1,len1);
+
+    int ex2[7] = {0,1,3,2,4,5,6};
+    int res2[7] = {0,1,2,3,4,5,6};
+    int len2 = 7;
+    insort(ex2,len2);
+    arrcomp(ex2,res2,len2);
+    
+    int ex3[6] = {6,1,2,3,4,5};
+    int res3[6] = {1,2,3,4,5,6};
+    int len3 = 6;
+    insort(ex3,len3);
+    arrcomp(ex3,res3,len3);
 }
