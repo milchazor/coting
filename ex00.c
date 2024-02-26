@@ -24,29 +24,36 @@ void arrprint(int* arr,int len)
     }
     printf("%d]\n", arr[len-1]);
 }
-void arrswap(int* arr, int len, int el,int target)
+void arrswap(int* arr, int len, int BIG,int SMOL)
 {
-    
-    int temp = arr[target];
-    for(int x = target; x < len; x++)
+    int copy[len];
+    for(int x = 0; x < len; x++)
+    {
+        copy[x] = arr[x];
+    }
+    for(int x = SMOL; x < len; x++)
+    {   
+        arr[x] = copy[x-1];
+    }
+    arr[SMOL] = copy[BIG];
+}
+void insort(int*arr, int len)
+{
+    int max = -1;
+    int pos = -1;
+    for(int x = len; x > len; x--)
     {
 
+        for(int y = 0; y < x; y++)
+        {
+
+        }
     }
 }
 void main()
 {
+    int arr[10] = {0,5,3,8,1};
     int len = 10;
-    int arr[len];
-    for(int x = 0; x < len; x++) 
-    {
-        arr[x]=x+1;
-    }
-
-    int one = 5;
-    int two = 6;
-    int* kms = arr;
-    printf("0x%p\n", kms);
-
-    arrswap(arr, len, one, two);
+    insort(arr,len);
     arrprint(arr,len);
 }
