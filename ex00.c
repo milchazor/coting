@@ -79,6 +79,7 @@ void arrswap(int* arr,int el1, int el2)
 
 void ins(int* arr, int len)
 {
+    printf("unfinished");
     if((len+1)%2 == 1) 
     {
         int dad = (len+1)/2;
@@ -89,10 +90,11 @@ void ins(int* arr, int len)
 
 void heapsort(int* arr, int len)
 {
-    
+    printf("unfinished");
 }
 void insort(int*arr, int len)
 {
+    int count = 0;
     for(int x = 1; x < len; x++)
     {
         int pos = x; 
@@ -104,12 +106,14 @@ void insort(int*arr, int len)
                 pos = y;
                 break;
             }
+            count++;
         } 
         //arrprint(arr,len);
         //printf("%d-->%d", x ,pos);
         arrshift(arr, len, x, pos);
         
     }
+    printf("%d\n");
 }
 
 void main()
@@ -131,4 +135,11 @@ void main()
     int len3 = 6;
     insort(ex3,len3);
     arrcomp(ex3,res3,len3);
+
+    int ex4[] = {0, 1, 3, 4, 2, 8, 9, 5, 6, 7};
+    int res4[] = {0,1,2,3,4,5,6,7,8,9};
+    insort(ex4,10);
+    arrcomp(ex4,res4,10);
+
+
 }
