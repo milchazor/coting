@@ -49,7 +49,7 @@ void arrcomp(int* arr1, int* arr2,int len)
     }
 }
 
-int arrswap(int* arr, int len, int BIG,int SMOL)
+int arrshift(int* arr, int len, int BIG,int SMOL)
 {
     if( BIG < SMOL)
     {
@@ -70,18 +70,44 @@ int arrswap(int* arr, int len, int BIG,int SMOL)
     return(0);
 }
 
+void arrswap(int* arr,int el1, int el2)
+{
+    int temp = arr[el1];
+    arr[el1] = arr[el2];
+    arr[el2] = temp;
+}
+
+void ins(int* arr, int len)
+{
+    if((len+1)%2 == 1) 
+    {
+        int dad = (len+1)/2;
+    } else {
+        int dad = len/2;
+    }
+}
+
+void heapsort(int* arr, int len)
+{
+    
+}
 void insort(int*arr, int len)
 {
     for(int x = 1; x < len; x++)
     {
-        int max = arr[x];
         int pos = x; 
 
-        for(int y = 0; y < x; y++)
-        {
-            if(arr[y]  max) {pos = y;}
-        }
-        arrswap(arr, len, x, pos);
+        for(int y = 0; y < x+1; y++)
+        {   
+            if(arr[y] > arr[x])
+            {
+                pos = y;
+                break;
+            }
+        } 
+        //arrprint(arr,len);
+        //printf("%d-->%d", x ,pos);
+        arrshift(arr, len, x, pos);
         
     }
 }
