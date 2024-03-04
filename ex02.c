@@ -50,7 +50,7 @@ void solveQueen(int board[][], int n, int* res)
     for(int x  = 0; x < n; x++)
     {
         for(int y = 0; y < n; y++)
-        {
+       {
             //if(board[x][y] == 1) {res++;}
         }
     }
