@@ -1,0 +1,10 @@
+Program ideas:
+-finance related
+-faily complex
+-interace required (app?)
+-EC?
+-language? (
+    -c annoying
+    -py too easy 
+    -java outdated 
+)
