@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+/*
 int isPalindrome(char X[],int i, int j)
 {
     if(i==j)
@@ -17,6 +17,7 @@ int isPalindrome(char X[],int i, int j)
         return 0;
     }
 }
+
 void clean(int* board[],int n)
 {
     for(int x = 0; x < n; x++)
@@ -28,7 +29,7 @@ void clean(int* board[],int n)
     }
 }
 
-int isSafe(int board[][], int x, int y, int n)
+int isSafe(int board[], int x, int y, int n)
 {
 
 }
@@ -55,10 +56,80 @@ void solveQueen(int board[][], int n, int* res)
         }
     }
 } 
+*/
+int in(char test, char tested[], int len)
+{
+    for(int x = 0; x < len;len++)
+    {
+        if(tested[x] == test) {return 1;}
+    }
+    return 0;
+}
+
+int num(char input[], int ind)
+{
+    int res = (int)input[ind];
+    int x = 0;
+    char num[10] = "0123456789";
+    while(in(input[ind+x],num,10))
+    {
+        printf("ind = %d, res = %d\n", ind-x,res);
+        res = res*10+(int)input[ind+x];
+        x++;
+    }
+    x = 0;
+    while(in(input[ind-x],num,10))
+    {
+        printf("ind = %d, res = %d\n", ind-x,res);
+        res = res+(int)input[ind-x]*10^x;
+        x++;
+       
+    }
+    return res;
+}
+
+int calculator(char* input[])
+{
+    int len = 0;
+    while(input[len] != "\0")
+    {
+        len++;
+    }
+    //calc(input,0,len-1);
+}
+
+int calc(char input[],int start, int end)
+{   
+    int counter = 0;
+  
+    for(int x = 0; x < end+1; x++)
+    {
+        int skipper = 0;
+        int temp = 1;
+        int run = x;
+        if(input[x] == "(")
+        {
+            while (input[run] != ")" || skipper > 0)
+            {
+                if(input[run] == ")"){skipper--;}
+                if(input[run] == "("){skipper++;}
+                run++;
+            }
+            calc(input,x,run);
+        }
+        if(input[x] == "*")
+        {
+
+        }
+    }
+
+
+
+}
 
 void main()
 {
-    //char test[] = "abcdefg";
-    //printf("%d \n", sizeof(test)/sizeof(test[0])); 
-    //printf("%d", isPalindrome(test, 0, sizeof(test)/sizeof(test[0])-2));
+ char tes[10] = "abc123+246";
+ printf("test1 = %d\n", num(tes,3));
+ printf("test2 = %d\n", num(tes,7));
 } 
