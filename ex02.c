@@ -69,15 +69,15 @@ int in(char test, char tested[], int len)
 int num(char input[], int ind)
 {
     int res = (int)input[ind];
-    int x = 0;
+    int x = 1;
     char num[10] = "0123456789";
     while(in(input[ind+x],num,10))
     {
-        printf("ind = %d, res = %d\n", ind-x,res);
+        printf("ind = %d, res = %d\n", ind+x,res);
         res = res*10+(int)input[ind+x];
         x++;
     }
-    x = 0;
+    x = 1;
     while(in(input[ind-x],num,10))
     {
         printf("ind = %d, res = %d\n", ind-x,res);
