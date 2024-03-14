@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <assert.h>
+#include <math.h>
 /*
 int isPalindrome(char X[],int i, int j)
 {
@@ -57,45 +59,43 @@ void solveQueen(int board[][], int n, int* res)
     }
 } 
 */
+
 int in(char test, char tested[], int len)
 {
-    for(int x = 0; x < len;len++)
+    for(int x = 0; x < len; x++)
     {
         if(tested[x] == test) {return 1;}
     }
     return 0;
 }
 
-int num(char input[], int ind)
+int num(char input[], int ind, int len)
 {
-    int res = (int)input[ind];
+    int res = (int)input[ind] - (int)'0';
     int x = 1;
     char num[10] = "0123456789";
-    while(in(input[ind+x],num,10))
+    while(in(input[ind+x],num,10) && ind + x < len)
     {
-        printf("ind = %d, res = %d\n", ind+x,res);
-        res = res*10+(int)input[ind+x];
+        res = res*10+((int)input[ind+x] - (int)'0');
         x++;
     }
     x = 1;
-    while(in(input[ind-x],num,10))
+    while(in(input[ind-x],num,10) && ind - x > -1)
     {
-        printf("ind = %d, res = %d\n", ind-x,res);
-        res = res+(int)input[ind-x]*10^x;
+        res = res + ((int)input[ind-x] - (int)'0') * pow(10,x);
         x++;
-       
     }
     return res;
 }
 
-int calculator(char* input[])
+int calculator(char input[])
 {
     int len = 0;
     while(input[len] != "\0")
     {
         len++;
     }
-    //calc(input,0,len-1);
+    calc(input,0,len-1);
 }
 
 int calc(char input[],int start, int end)
@@ -129,7 +129,9 @@ int calc(char input[],int start, int end)
 
 void main()
 {
- char tes[10] = "abc123+246";
- printf("test1 = %d\n", num(tes,3));
- printf("test2 = %d\n", num(tes,7));
+
+ char ex[10] = "abc123+246";
+ int len = 10;
+ printf("test1 = %d\n", num(ex,5,len));
+ printf("test2 = %d\n", num(ex,9,len));
 } 
